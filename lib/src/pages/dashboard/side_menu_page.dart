@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:insurance_app/src/providers/AuthProvider.dart';
 import 'package:insurance_app/src/utils/config/size_config.dart';
 import 'package:insurance_app/src/utils/style/colors.dart';
 
@@ -22,7 +23,7 @@ class SideMenu extends StatelessWidget{
                   height: 100,
                   alignment: Alignment.topCenter,
                   width: double.infinity,
-                  padding: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 30),
                   child: SizedBox(
                     width: 35,
                     height: 20,
@@ -31,7 +32,7 @@ class SideMenu extends StatelessWidget{
                     ),
                   )
               ),
-              //home
+              //home user
               IconButton(
                 onPressed: (){},
                 icon: SvgPicture.asset(
@@ -41,41 +42,22 @@ class SideMenu extends StatelessWidget{
                 iconSize: 20,
                 padding: EdgeInsets.symmetric(vertical: 20.0),
               ),
-              //sign in
-              IconButton(
+              // home client
+              if(AuthProvider().isAuthenticated) IconButton(
                 onPressed: (){},
                 icon: SvgPicture.asset(
-                  'assets/svg/invoice.svg',
+                  'assets/svg/clipboard.svg',
                   color: AppColors.iconGray,
                 ),
                 iconSize: 20,
                 padding: EdgeInsets.symmetric(vertical: 20.0),
               ),
-              //cotizar
+              // sign out
               IconButton(
-                onPressed: (){},
+                onPressed: ()=>
+                Navigator.popAndPushNamed(context, 'login'),
                 icon: SvgPicture.asset(
-                  'assets/svg/bank.svg',
-                  color: AppColors.iconGray,
-                ),
-                iconSize: 20,
-                padding: EdgeInsets.symmetric(vertical: 20.0),
-              ),
-              //contacto
-              IconButton(
-                onPressed: (){},
-                icon: SvgPicture.asset(
-                  'assets/svg/home.svg',
-                  color: AppColors.iconGray,
-                ),
-                iconSize: 20,
-                padding: EdgeInsets.symmetric(vertical: 20.0),
-              ),
-              // pagar factura
-              IconButton(
-                onPressed: (){},
-                icon: SvgPicture.asset(
-                  'assets/svg/credit-card.svg',
+                  'assets/svg/sign-out.svg',
                   color: AppColors.iconGray,
                 ),
                 iconSize: 20,
